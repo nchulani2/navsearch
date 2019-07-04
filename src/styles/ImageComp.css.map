@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AACE,UADQ,CACR,SAAS,CAAC;EAER,aAAa,EAAE,GAAG;CACnB",
+    "sources": [
+        "ImageComp.scss"
+    ],
+    "names": [],
+    "file": "ImageComp.css"
+}

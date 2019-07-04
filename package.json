@@ -1,11 +1,21 @@
 {
   "name": "formseventsandapi.js",
+  "description": "Search engine that uses the unsplash API for images",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "10.15.3",
+    "npm": "6.4.1"
+  },
+  "author": "Naveen Chulani",
+  "license": "ISC",
   "dependencies": {
+    "axios": "^0.19.0",
+    "dotenv": "^8.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "react-stack-grid": "^0.7.1"
   },
   "scripts": {
     "start": "react-scripts start",

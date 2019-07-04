@@ -1,0 +1,13 @@
+.imageList .textEle {
+  text-align: center;
+  margin: 1.2rem 0;
+  letter-spacing: 2px;
+  font-family: cursive;
+}
+
+.imageList .textEle .boldEle {
+  font-weight: bolder;
+  margin: 0 3px;
+  letter-spacing: inherit;
+}
+/*# sourceMappingURL=ImageList.css.map */

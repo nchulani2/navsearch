@@ -1,0 +1,51 @@
+.formInput {
+  text-align: center;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+}
+
+.formInput #inputEle {
+  margin-top: 2rem;
+  width: 60vw;
+  height: 6rem;
+  -webkit-transition: all linear 0.1s;
+  transition: all linear 0.1s;
+}
+
+.formInput #inputEle .focusedEle {
+  font-size: 3em;
+  border-radius: 80px;
+  -webkit-transition: all linear 0.1s;
+  transition: all linear 0.1s;
+  background: #f5f3ee;
+}
+
+.formInput #inputEle .focusedEle:focus {
+  -webkit-transition: all linear 0.2s;
+  transition: all linear 0.2s;
+  -webkit-box-shadow: 1px 1px 3px black;
+          box-shadow: 1px 1px 3px black;
+}
+
+.formInput #inputEle #iconEle {
+  font-size: 2.25rem;
+}
+
+@media (max-width: 850px) {
+  .formInput #inputEle {
+    height: 3rem;
+    -webkit-transition: all linear 0.1s;
+    transition: all linear 0.1s;
+  }
+  .formInput #inputEle .focusedEle {
+    font-size: 1.5rem;
+    -webkit-transition: all linear 0.1s;
+    transition: all linear 0.1s;
+  }
+  .formInput #inputEle #iconEle {
+    font-size: 1rem;
+  }
+}
+/*# sourceMappingURL=FormInput.css.map */
