@@ -1,4 +1,4 @@
-# Navsearch [![Netlify Status](https://api.netlify.com/api/v1/badges/1cd4e207-4c24-45a4-9dc6-9719bc3ba8b3/deploy-status)](https://app.netlify.com/sites/navsearch/deploys)
+# Navsearch [![Netlify Status][![Netlify Status](https://api.netlify.com/api/v1/badges/082fcc87-39fe-4039-9c9b-a03d85183420/deploy-status)](https://app.netlify.com/sites/navsearch/deploys)
 
 **Navsearch is a web application built with the React framework and unsplash API**
 
