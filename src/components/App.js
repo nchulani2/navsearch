@@ -29,7 +29,7 @@ export default class App extends React.Component {
           page: pageCount
         }
       });
-      console.log(parsedBody);
+
       this.setState({
         image: [...image, ...parsedBody.data.results],
         totalPage: parsedBody.data.total_pages,
