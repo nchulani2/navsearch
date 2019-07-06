@@ -7,11 +7,11 @@
 }
 
 .formInput #inputEle {
-  margin-top: 2rem;
-  width: 60vw;
+  width: 70%;
   height: 6rem;
   -webkit-transition: all linear 0.1s;
   transition: all linear 0.1s;
+  margin-top: 1rem;
 }
 
 .formInput #inputEle .focusedEle {

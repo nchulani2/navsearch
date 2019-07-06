@@ -18,6 +18,7 @@ class FormInput extends React.Component {
   // The word can change, instead of onInputChange, it can be inputChanger or whatever you wanna call it, user data will always be inside the event object inside event.target.value
   // NOTE When we invoke a function, it essentially rips the class out of the function, hence why we get this being defined as "undefined"
   // This can be fixed using ES6 arrow functions as they bind an instance of the class to "this" to that function, can also be done using constructor method
+
   onFormSubmit = e => {
     // preventDefault method prevents the default form functionality, eg. hitting enter will reload the page, we removed that with preventDefault
     e.preventDefault();

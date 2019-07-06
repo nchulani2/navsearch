@@ -2,6 +2,7 @@ import React from 'react';
 import unsplash from '../api/unsplashapi';
 import FormInput from './FormInput';
 import ImageList from './ImageList';
+import Header from './Header';
 
 // CAN ONLY USE "export default" ON THE SAME LINE WITH CLASS BASED COMPONENTS
 export default class App extends React.Component {
@@ -11,7 +12,7 @@ export default class App extends React.Component {
     per_page: 30,
     totalPage: '',
     scrolling: false,
-    imageCount: 0,
+    imageCount: null,
     userInput: 'beach'
   };
 
@@ -43,6 +44,7 @@ export default class App extends React.Component {
 
   // MORE LOADING
   onLoadMore = () => {
+    // console.log('loaded more reached');
     this.setState(
       prevState => ({
         pageCount: prevState.pageCount + 1,
@@ -68,8 +70,10 @@ export default class App extends React.Component {
         userInput: userText,
         imageCount: parsedBody.data.total,
         image: parsedBody.data.results,
-        totalPage: parsedBody.data.total_pages
+        totalPage: parsedBody.data.total_pages,
+        scrolling: false
       });
+      window.scrollTo(0, 0);
     } catch (err) {
       alert(err);
     }
@@ -83,6 +87,14 @@ export default class App extends React.Component {
     });
   };
 
+  // componentWillUnmount = () => {
+  //   this.scrollListener = window.removeEventListener('scroll', () => {
+  //     this.handleScroll();
+  //   });
+  // };
+
+  // componentWillUpdate = (prevProps, currentState) => {};
+
   // scroll handler to detect when at bottom of page
   handleScroll = e => {
     const { scrolling, totalPage, pageCount } = this.state;
@@ -94,57 +106,50 @@ export default class App extends React.Component {
 
     let scrollHeight =
       (document.documentElement && document.documentElement.scrollHeight) ||
-      document.body.scrollHeight;
+      document.body.scrollHeight - 500;
 
     let clientHeight =
       document.documentElement.clientHeight || window.innerHeight;
 
     let scrolledToBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight;
+    // console.log(scrollTop, scrollHeight, scrolledToBottom);
     if (scrolledToBottom) {
       this.onLoadMore();
     }
   };
 
   render() {
-    if (this.state.scrolling) {
+    if (this.state.imageCount) {
+      // console.log('imageCount running');
       return (
         <div className="ui container app">
+          <Header />
           {/* Props only can go down, we need a way to communicate from child to parent => send them through as a function invoked */}
-
           <FormInput onSubmit={this.onSearchSubmit} />
-
           {/* props.children is undefined unless we are nesting components */}
-
           <ImageList
-            handleScroll={this.handleRemoveScroll}
             className="imageListPar"
             images={this.state.image}
             imageCount={this.state.imageCount}
             totalPages={this.state.totalPage}
             pageCount={this.state.pageCount}
           />
-          <div style={{ textAlign: 'center', margin: '20px 0' }}>
+          <div
+            style={{
+              textAlign: 'center',
+              margin: '20px 0',
+              display: this.state.scrolling ? '' : 'none'
+            }}>
             <i className="notched circle loading huge icon" />
           </div>
         </div>
       );
     }
+    // console.log('form running');
     return (
       <div className="ui container app">
         {/* Props only can go down, we need a way to communicate from child to parent => send them through as a function invoked */}
-
         <FormInput onSubmit={this.onSearchSubmit} />
-
-        {/* props.children is undefined unless we are nesting components */}
-
-        <ImageList
-          handleScroll={this.handleRemoveScroll}
-          className="imageListPar"
-          images={this.state.image}
-          imageCount={this.state.imageCount}
-          totalPages={this.state.totalPage}
-          pageCount={this.state.pageCount}
-        />
       </div>
     );
   }

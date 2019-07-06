@@ -1,9 +1,6 @@
 import React from 'react';
 import '../styles/ImageList.css';
 import ImageComp from './ImageComp';
-import StackGrid, { transitions } from 'react-stack-grid';
-
-const { fadeUp } = transitions;
 
 export default class ImageList extends React.Component {
   newImages = images =>
@@ -22,19 +19,8 @@ export default class ImageList extends React.Component {
           Form Input has found:
           <strong className="boldEle">{this.props.imageCount}</strong>images
         </p>
-        {/* USED STACKGRID, ITS AMAZINGLY FAST */}
-        <StackGrid
-          columnWidth={350}
-          gutterWidth={10}
-          gutterHeight={10}
-          monitorImagesLoaded={true}
-          appear={fadeUp.appear}
-          appeared={fadeUp.appeared}
-          enter={fadeUp.enter}
-          entered={fadeUp.entered}
-          leaved={fadeUp.leaved}>
-          {this.newImages(this.props.images)}
-        </StackGrid>
+
+        <div className="containerPar">{this.newImages(this.props.images)}</div>
       </div>
     );
   }

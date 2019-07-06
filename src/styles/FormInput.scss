@@ -7,11 +7,10 @@ $transProp: all linear 0.1s;
   z-index: 99;
 
   #inputEle {
-    margin-top: 2rem;
-    width: 60vw;
+    width: 70%;
     height: 6rem;
     transition: $transProp;
-
+    margin-top: 1rem;
     .focusedEle {
       font-size: 3em;
       border-radius: 80px;
