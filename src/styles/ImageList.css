@@ -40,10 +40,17 @@
   }
 }
 
-@media (min-width: 1700px) {
+@media (min-width: 1900px) {
   .imageList .containerPar {
     -webkit-column-count: 5;
             column-count: 5;
+  }
+}
+
+@media (min-width: 2400px) {
+  .imageList .containerPar {
+    -webkit-column-count: 6;
+            column-count: 6;
   }
 }
 /*# sourceMappingURL=ImageList.css.map */

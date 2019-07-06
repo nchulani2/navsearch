@@ -3,6 +3,7 @@ import unsplash from '../api/unsplashapi';
 import FormInput from './FormInput';
 import ImageList from './ImageList';
 import Header from './Header';
+import Footer from './Footer';
 
 // CAN ONLY USE "export default" ON THE SAME LINE WITH CLASS BASED COMPONENTS
 export default class App extends React.Component {
@@ -122,11 +123,41 @@ export default class App extends React.Component {
     if (this.state.imageCount) {
       // console.log('imageCount running');
       return (
-        <div className="ui container app">
+        <div style={{ width: '100%' }}>
+          <div style={{ width: '96%', marginLeft: '2%', marginRight: '2%' }}>
+            <Header />
+
+            {/* Props only can go down, we need a way to communicate from child to parent => send them through as a function invoked */}
+            <FormInput onSubmit={this.onSearchSubmit} />
+            {/* props.children is undefined unless we are nesting components */}
+            <ImageList
+              className="imageListPar"
+              images={this.state.image}
+              imageCount={this.state.imageCount}
+              totalPages={this.state.totalPage}
+              pageCount={this.state.pageCount}
+            />
+
+            <div
+              style={{
+                textAlign: 'center',
+                margin: '20px 0',
+                display: this.state.scrolling ? '' : 'none'
+              }}>
+              <i className="notched circle loading huge icon" />
+            </div>
+          </div>
+          <Footer />
+        </div>
+      );
+    }
+    // console.log('form running');
+    return (
+      <div style={{ width: '100%' }}>
+        <div style={{ width: '100%', margin: '0 1rem' }}>
           <Header />
           {/* Props only can go down, we need a way to communicate from child to parent => send them through as a function invoked */}
           <FormInput onSubmit={this.onSearchSubmit} />
-          {/* props.children is undefined unless we are nesting components */}
           <ImageList
             className="imageListPar"
             images={this.state.image}
@@ -134,22 +165,8 @@ export default class App extends React.Component {
             totalPages={this.state.totalPage}
             pageCount={this.state.pageCount}
           />
-          <div
-            style={{
-              textAlign: 'center',
-              margin: '20px 0',
-              display: this.state.scrolling ? '' : 'none'
-            }}>
-            <i className="notched circle loading huge icon" />
-          </div>
         </div>
-      );
-    }
-    // console.log('form running');
-    return (
-      <div className="ui container app">
-        {/* Props only can go down, we need a way to communicate from child to parent => send them through as a function invoked */}
-        <FormInput onSubmit={this.onSearchSubmit} />
+        <Footer />
       </div>
     );
   }

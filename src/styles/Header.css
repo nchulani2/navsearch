@@ -2,7 +2,14 @@
 .headerPar {
   text-align: center;
   padding-top: 1rem;
+  padding-bottom: 6rem;
   font-family: 'Chelsea Market', cursive;
   font-size: 2rem;
+}
+
+@media (max-width: 850px) {
+  .headerPar {
+    padding-bottom: 4rem;
+  }
 }
 /*# sourceMappingURL=Header.css.map */

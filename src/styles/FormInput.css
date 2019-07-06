@@ -1,21 +1,24 @@
 .formInput {
   text-align: center;
-  position: -webkit-sticky;
-  position: sticky;
+  position: fixed;
+  left: 50%;
+  -webkit-transform: translate(-50%, 70%);
+          transform: translate(-50%, 70%);
+  width: 100%;
   top: 0;
   z-index: 99;
 }
 
 .formInput #inputEle {
   width: 70%;
-  height: 6rem;
+  height: 4rem;
   -webkit-transition: all linear 0.1s;
   transition: all linear 0.1s;
   margin-top: 1rem;
 }
 
 .formInput #inputEle .focusedEle {
-  font-size: 3em;
+  font-size: 2em;
   border-radius: 80px;
   -webkit-transition: all linear 0.1s;
   transition: all linear 0.1s;
