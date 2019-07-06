@@ -154,7 +154,7 @@ export default class App extends React.Component {
     // console.log('form running');
     return (
       <div style={{ width: '100%' }}>
-        <div style={{ width: '100%', margin: '0 1rem' }}>
+        <div style={{ width: '100%' }}>
           <Header />
           {/* Props only can go down, we need a way to communicate from child to parent => send them through as a function invoked */}
           <FormInput onSubmit={this.onSearchSubmit} />
