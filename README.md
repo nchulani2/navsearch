@@ -8,7 +8,7 @@
 
 - **Infinite Scrolling using DOM properties**
 
-- **Grid system using StackGrid**
+- **Grid system using CSS only**
 
 - **Sticky input for ease of search**
 
