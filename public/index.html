@@ -34,6 +34,31 @@
         min-height: 100%;
         height: auto;
       }
+      /* Loader styles */
+      .loader {
+        position: absolute;
+        top: calc(50% - 3.5em);
+        left: calc(50% - 3.5em);
+        width: 6em;
+        height: 6em;
+        border: 1.1em solid rgba(0, 0, 0, 0.3);
+        border-left: 1.1em solid #000;
+        animation: load8 1.1s infinite linear;
+        transition: opacity 0.3s;
+
+        border-radius: 50%;
+      }
+      .loader--hide {
+        opacity: 0;
+      }
+      @keyframes load8 {
+        0% {
+          transform: rotate(0);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
     </style>
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
@@ -49,6 +74,8 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+
+    <div class="loader"></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
