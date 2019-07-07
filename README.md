@@ -14,6 +14,18 @@
 
 - **Responsive and mobile-friendly**
 
+## Development
+
+**Want to run this locally?**
+
+```
+git clone https://github.com/nchulani2/navsearch
+cd navsearch
+npm install
+npm start
+open http://localhost:3000
+```
+
 ## License
 
 - ISC
