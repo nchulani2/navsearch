@@ -2,7 +2,9 @@ import React from 'react';
 import '../styles/ImageComp.css';
 
 export default class ImageComp extends React.Component {
-  state = { loaded: false };
+  handleImageChange = () => {
+    this.props.handleImg();
+  };
 
   render() {
     // destructurizing keys from the JSON
@@ -13,11 +15,11 @@ export default class ImageComp extends React.Component {
         <div className="content">
           <div className="content-overlay" />
           <img
-            style={this.state.loaded ? {} : { display: 'none' }}
             id="imageEle"
             alt={alt_description}
             src={urls.regular}
-            onLoad={() => this.setState({ loaded: true })}
+            onLoad={this.handleImageChange}
+            onError={this.handleImageChange}
           />
           <div className="content-details fadeIn-bottom">
             <p className="content-text">

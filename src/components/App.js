@@ -107,7 +107,7 @@ export default class App extends React.Component {
 
     let scrollHeight =
       (document.documentElement && document.documentElement.scrollHeight) ||
-      document.body.scrollHeight - 500;
+      document.body.scrollHeight;
 
     let clientHeight =
       document.documentElement.clientHeight || window.innerHeight;
@@ -124,7 +124,11 @@ export default class App extends React.Component {
       // console.log('imageCount running');
       return (
         <div style={{ width: '100%' }}>
-          <div style={{ width: '96%', marginLeft: '2%', marginRight: '2%' }}>
+          <div
+            style={{
+              width: '96%',
+              marginLeft: '2%'
+            }}>
             <Header />
 
             {/* Props only can go down, we need a way to communicate from child to parent => send them through as a function invoked */}
@@ -137,15 +141,6 @@ export default class App extends React.Component {
               totalPages={this.state.totalPage}
               pageCount={this.state.pageCount}
             />
-
-            <div
-              style={{
-                textAlign: 'center',
-                margin: '20px 0',
-                display: this.state.scrolling ? '' : 'none'
-              }}>
-              <i className="notched circle loading huge icon" />
-            </div>
           </div>
           <Footer />
         </div>
