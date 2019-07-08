@@ -56,19 +56,30 @@ export default class App extends React.Component {
   };
 
   // we can use promises, or async and await to retrieve data with axios
-  onSearchSubmit = async userText => {
+  onSearchSubmit = userText => {
+    this.setState(
+      prevState => ({
+        pageCount: prevState.pageCount - (prevState.pageCount - 1), // always outputs 1
+        userInput: userText
+      }),
+      this.getNewData
+    );
+  };
+
+  getNewData = async () => {
+    console.log(this.state.pageCount, this.state.userInput);
     try {
       // check the unsplashapi.js file for api config
       const parsedBody = await unsplash.get(`/search/photos/`, {
         params: {
-          query: userText,
+          query: this.state.userInput,
           per_page: '30',
-          page: 1
+          page: this.state.pageCount
         }
       });
 
       this.setState({
-        userInput: userText,
+        userInput: this.state.userInput,
         imageCount: parsedBody.data.total,
         image: parsedBody.data.results,
         totalPage: parsedBody.data.total_pages,
@@ -88,14 +99,6 @@ export default class App extends React.Component {
     });
   };
 
-  // componentWillUnmount = () => {
-  //   this.scrollListener = window.removeEventListener('scroll', () => {
-  //     this.handleScroll();
-  //   });
-  // };
-
-  // componentWillUpdate = (prevProps, currentState) => {};
-
   // scroll handler to detect when at bottom of page
   handleScroll = e => {
     const { scrolling, totalPage, pageCount } = this.state;
@@ -112,8 +115,9 @@ export default class App extends React.Component {
     let clientHeight =
       document.documentElement.clientHeight || window.innerHeight;
 
-    let scrolledToBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight;
-    // console.log(scrollTop, scrollHeight, scrolledToBottom);
+    let scrolledToBottom =
+      Math.ceil(scrollTop + clientHeight) >= scrollHeight - 300;
+
     if (scrolledToBottom) {
       this.onLoadMore();
     }

@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/ImageList.css';
 import ImageComp from './ImageComp';
+import Spinner from './Spinner';
 
 const imagesLoaded = parentNode => {
   const imgEles = [...parentNode.querySelectorAll('img')];
@@ -22,14 +23,7 @@ export default class ImageList extends React.Component {
     if (!this.state.loading) {
       return null;
     }
-    return (
-      <div>
-        <i
-          style={{ position: 'fixed' }}
-          className="loadey notched massive circle loading icon"
-        />
-      </div>
-    );
+    return <Spinner />;
   };
 
   handleImageChange = () => {
@@ -49,7 +43,6 @@ export default class ImageList extends React.Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <div className="imageList" style={{ marginBottom: '2rem' }}>
         <p className="textEle">

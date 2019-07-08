@@ -10,12 +10,6 @@
   letter-spacing: 2px;
 }
 
-.imageList .gallery {
-  color: grey;
-  position: fixed;
-  z-index: 99;
-}
-
 .imageList .gallery .containerPar {
   -webkit-column-count: 1;
           column-count: 1;
