@@ -2,6 +2,11 @@ import React from 'react';
 import '../styles/ImageComp.css';
 
 export default class ImageComp extends React.Component {
+  state = {
+    open: false
+  };
+
+  // callback to imagelist to check if images are laoded
   handleImageChange = () => {
     this.props.handleImg();
   };
@@ -21,6 +26,7 @@ export default class ImageComp extends React.Component {
             onLoad={this.handleImageChange}
             onError={this.handleImageChange}
           />
+
           <div className="content-details fadeIn-bottom">
             <p className="content-text">
               Image by

@@ -13,6 +13,7 @@ export default class App extends React.Component {
     per_page: 30,
     totalPage: '',
     scrolling: false,
+    modalOpen: false,
     imageCount: null,
     userInput: 'beach'
   };
@@ -67,7 +68,6 @@ export default class App extends React.Component {
   };
 
   getNewData = async () => {
-    console.log(this.state.pageCount, this.state.userInput);
     try {
       // check the unsplashapi.js file for api config
       const parsedBody = await unsplash.get(`/search/photos/`, {
@@ -94,15 +94,18 @@ export default class App extends React.Component {
   componentDidMount = () => {
     // initial load
     this.onLoadPage();
-    this.scrollListener = window.addEventListener('scroll', e => {
-      this.handleScroll(e);
-    });
+    window.addEventListener('scroll', this.handleScroll);
+  };
+
+  componentWillUnmount = () => {
+    window.removeEventListener('scroll', this.handleScroll);
   };
 
   // scroll handler to detect when at bottom of page
   handleScroll = e => {
-    const { scrolling, totalPage, pageCount } = this.state;
+    const { scrolling, modalOpen, totalPage, pageCount } = this.state;
     if (scrolling) return;
+    if (modalOpen) return;
     if (totalPage <= pageCount) return;
     let scrollTop =
       (document.documentElement && document.documentElement.scrollTop) ||
@@ -116,7 +119,7 @@ export default class App extends React.Component {
       document.documentElement.clientHeight || window.innerHeight;
 
     let scrolledToBottom =
-      Math.ceil(scrollTop + clientHeight) >= scrollHeight - 300;
+      Math.ceil(scrollTop + clientHeight) >= scrollHeight - 100;
 
     if (scrolledToBottom) {
       this.onLoadMore();
@@ -125,7 +128,6 @@ export default class App extends React.Component {
 
   render() {
     if (this.state.imageCount) {
-      // console.log('imageCount running');
       return (
         <div style={{ width: '100%' }}>
           <div
@@ -150,7 +152,7 @@ export default class App extends React.Component {
         </div>
       );
     }
-    // console.log('form running');
+
     return (
       <div style={{ width: '100%' }}>
         <div style={{ width: '100%' }}>
