@@ -2,10 +2,6 @@ import React from 'react';
 import '../styles/ImageComp.css';
 
 export default class ImageComp extends React.Component {
-  state = {
-    open: false
-  };
-
   // callback to imagelist to check if images are laoded
   handleImageChange = () => {
     this.props.handleImg();

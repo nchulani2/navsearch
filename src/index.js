@@ -17,7 +17,7 @@ class Index extends React.Component {
   };
   render() {
     return (
-      <div className="Index animated fadeIn slow delay-0s">
+      <div>
         <App />
       </div>
     );
@@ -26,4 +26,4 @@ class Index extends React.Component {
 
 setTimeout(() => {
   ReactDOM.render(<Index />, document.querySelector('#root'));
-}, 1000);
+}, 3000);

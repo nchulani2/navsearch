@@ -25,7 +25,7 @@ class FormInput extends React.Component {
 
     // in a class-based component, referencing props is done through "this" rather than just props, in this case, 'this' refers to class FormInput
 
-    this.props.onSubmit(this.state.userText);
+    this.props.submitNewData(this.state.userText);
   };
 
   render() {

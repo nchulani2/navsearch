@@ -4,9 +4,12 @@ import '../styles/Spinner.css';
 const Spinner = props => {
   return (
     <div className="spinner">
-      <div className="spinnerOuter">
-        <i className="loadey notched massive circle loading icon" />
-        <h4>Almost done . . .</h4>
+      <h1>Loading images. . .</h1>
+      <div className="sk-folding-cube">
+        <div className="sk-cube1 sk-cube" />
+        <div className="sk-cube2 sk-cube" />
+        <div className="sk-cube4 sk-cube" />
+        <div className="sk-cube3 sk-cube" />
       </div>
     </div>
   );

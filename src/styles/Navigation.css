@@ -1,0 +1,43 @@
+.navigation {
+  background: rgba(225, 225, 225, 0.85);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  text-align: center;
+  z-index: 99;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  animation-delay: 0.1s;
+  animation-duration: 1s;
+}
+
+.hideNav {
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  top: -115px;
+}
+.navigation .headerPar {
+  line-height: 30px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-family: 'Indie Flower', cursive;
+  font-weight: bolder;
+  letter-spacing: 2px;
+  font-size: 2rem;
+}
+
+.navigation .formCount {
+  font-size: 15px;
+  line-height: 20px;
+  padding: 15px 0;
+  font-family: 'Chelsea Market', cursive;
+}
+.navigation .formCount span {
+  letter-spacing: 2px;
+}
+
+@media (max-width: 850px) {
+  .hideNav {
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    top: -105px;
+  }
+}

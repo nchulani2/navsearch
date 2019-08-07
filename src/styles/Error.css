@@ -1,0 +1,17 @@
+.error {
+  position: fixed;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -65%);
+  text-align: center;
+}
+
+.error h1 {
+  font-family: 'Indie Flower', cursive;
+  letter-spacing: 3px;
+  line-height: 50px;
+}
+.error h3 {
+  font-family: 'Indie Flower', cursive;
+  letter-spacing: 1px;
+}

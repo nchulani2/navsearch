@@ -5,6 +5,7 @@ import Spinner from './Spinner';
 
 const imagesLoaded = parentNode => {
   const imgEles = [...parentNode.querySelectorAll('img')];
+
   for (let index = 0; index < imgEles.length; index++) {
     const img = imgEles[index];
     if (!img.complete) {
@@ -15,14 +16,21 @@ const imagesLoaded = parentNode => {
 };
 
 export default class ImageList extends React.Component {
-  state = {
-    loading: true
-  };
+  constructor(props) {
+    super(props);
+
+    this.galleryEle = React.createRef();
+    this.state = {
+      loading: true
+    };
+  }
 
   renderSpinner = () => {
     if (!this.state.loading) {
+      document.documentElement.classList.remove('noScroll');
       return null;
     }
+    document.documentElement.classList.add('noScroll');
     return <Spinner />;
   };
 
@@ -44,20 +52,13 @@ export default class ImageList extends React.Component {
 
   render() {
     return (
-      <div className="imageList" style={{ marginBottom: '2rem' }}>
-        <p className="textEle">
-          Form Input has found:
-          <strong className="boldEle">{this.props.imageCount}</strong>images
-        </p>
-        <div
-          className="gallery"
-          ref={ele => {
-            this.galleryEle = ele;
-          }}>
-          {this.renderSpinner()}
-          <div className="containerPar">
+      <div className="imageList">
+        <div className="gallery" ref={ele => (this.galleryEle = ele)}>
+          <div id="containerPar" className="containerPar animated fadeInUp">
             {this.props.images.map(image => this.renderImage(image))}
           </div>
+
+          {this.renderSpinner()}
         </div>
       </div>
     );

@@ -1,19 +1,18 @@
 import React from 'react';
 import unsplash from '../api/unsplashapi';
-import FormInput from './FormInput';
 import ImageList from './ImageList';
-import Header from './Header';
 import Footer from './Footer';
+import Navigation from './Navigation';
+import Error from './Error';
 
 // CAN ONLY USE "export default" ON THE SAME LINE WITH CLASS BASED COMPONENTS
 export default class App extends React.Component {
   state = {
     image: [],
     pageCount: 1,
-    per_page: 30,
-    totalPage: '',
+    per_page: 20,
+    totalPage: null,
     scrolling: false,
-    modalOpen: false,
     imageCount: null,
     userInput: 'beach'
   };
@@ -60,9 +59,11 @@ export default class App extends React.Component {
   onSearchSubmit = userText => {
     this.setState(
       prevState => ({
+        image: [],
         pageCount: prevState.pageCount - (prevState.pageCount - 1), // always outputs 1
         userInput: userText
       }),
+
       this.getNewData
     );
   };
@@ -73,7 +74,7 @@ export default class App extends React.Component {
       const parsedBody = await unsplash.get(`/search/photos/`, {
         params: {
           query: this.state.userInput,
-          per_page: '30',
+          per_page: this.state.per_page,
           page: this.state.pageCount
         }
       });
@@ -85,7 +86,6 @@ export default class App extends React.Component {
         totalPage: parsedBody.data.total_pages,
         scrolling: false
       });
-      window.scrollTo(0, 0);
     } catch (err) {
       alert(err);
     }
@@ -103,9 +103,9 @@ export default class App extends React.Component {
 
   // scroll handler to detect when at bottom of page
   handleScroll = e => {
-    const { scrolling, modalOpen, totalPage, pageCount } = this.state;
+    const { scrolling, totalPage, pageCount } = this.state;
     if (scrolling) return;
-    if (modalOpen) return;
+
     if (totalPage <= pageCount) return;
     let scrollTop =
       (document.documentElement && document.documentElement.scrollTop) ||
@@ -129,16 +129,17 @@ export default class App extends React.Component {
   render() {
     if (this.state.imageCount) {
       return (
-        <div style={{ width: '100%' }}>
+        <div style={{ width: '100%', height: '100%' }}>
           <div
             style={{
-              width: '96%',
-              marginLeft: '2%'
+              width: '100%',
+              height: '100%'
             }}>
-            <Header />
-
             {/* Props only can go down, we need a way to communicate from child to parent => send them through as a function invoked */}
-            <FormInput onSubmit={this.onSearchSubmit} />
+            <Navigation
+              imageCount={this.state.imageCount}
+              submitNew={this.onSearchSubmit}
+            />
             {/* props.children is undefined unless we are nesting components */}
             <ImageList
               className="imageListPar"
@@ -151,24 +152,22 @@ export default class App extends React.Component {
           <Footer />
         </div>
       );
-    }
-
-    return (
-      <div style={{ width: '100%' }}>
+    } else if (this.state.imageCount === 0) {
+      return (
         <div style={{ width: '100%' }}>
-          <Header />
-          {/* Props only can go down, we need a way to communicate from child to parent => send them through as a function invoked */}
-          <FormInput onSubmit={this.onSearchSubmit} />
-          <ImageList
-            className="imageListPar"
-            images={this.state.image}
-            imageCount={this.state.imageCount}
-            totalPages={this.state.totalPage}
-            pageCount={this.state.pageCount}
-          />
+          <div style={{ width: '100%' }}>
+            {/* Props only can go down, we need a way to communicate from child to parent => send them through as a function invoked */}
+
+            <Navigation
+              imageCount={this.state.imageCount}
+              submitNew={this.onSearchSubmit}
+            />
+            <Error userInput={this.state.userInput} />
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-    );
+      );
+    }
+    return null;
   }
 }
