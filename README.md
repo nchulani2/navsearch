@@ -4,13 +4,15 @@
 
 **A running demo of the app can be found here at - [navsearch](https://navsearch.netlify.com/)**
 
+![navsearch](https://github.com/nchulani2/navsearch/blob/master/navsearch.gif)
+
 ## Features
 
 - **Infinite Scrolling using DOM properties**
 
-- **Grid system using CSS only**
+- **Masonry grid using CSS only**
 
-- **Sticky input for ease of search**
+- **Sticky nav for ease of search**
 
 - **Load check for images**
 

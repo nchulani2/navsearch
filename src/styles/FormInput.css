@@ -7,6 +7,7 @@
   width: 70%;
   height: 4rem;
   -webkit-transition: all linear 0.1s;
+  -o-transition: all linear 0.1s;
   transition: all linear 0.1s;
 }
 
@@ -14,12 +15,14 @@
   font-size: 2em;
   border-radius: 80px;
   -webkit-transition: all linear 0.1s;
+  -o-transition: all linear 0.1s;
   transition: all linear 0.1s;
   background: #f5f3ee;
 }
 
 .formInput #inputEle .focusedEle:focus {
   -webkit-transition: all linear 0.2s;
+  -o-transition: all linear 0.2s;
   transition: all linear 0.2s;
   -webkit-box-shadow: 1px 1px 3px black;
   box-shadow: 1px 1px 3px black;
@@ -33,15 +36,16 @@
   .formInput #inputEle {
     height: 3rem;
     -webkit-transition: all linear 0.1s;
+    -o-transition: all linear 0.1s;
     transition: all linear 0.1s;
   }
   .formInput #inputEle .focusedEle {
     font-size: 1.5rem;
     -webkit-transition: all linear 0.1s;
+    -o-transition: all linear 0.1s;
     transition: all linear 0.1s;
   }
   .formInput #inputEle #iconEle {
     font-size: 1rem;
   }
 }
-/*# sourceMappingURL=FormInput.css.map */

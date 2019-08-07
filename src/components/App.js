@@ -45,7 +45,6 @@ export default class App extends React.Component {
 
   // MORE LOADING
   onLoadMore = () => {
-    // console.log('loaded more reached');
     this.setState(
       prevState => ({
         pageCount: prevState.pageCount + 1,

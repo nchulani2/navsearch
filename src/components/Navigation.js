@@ -41,7 +41,7 @@ class Navigation extends Component {
         <div className="headerPar">navsearch</div>
         <FormInput submitNewData={this.props.submitNew} />
         <div className="formCount">
-          Number of images found: <span>{this.props.imageCount}</span> images
+          Total count: <span>{this.props.imageCount}</span> images
         </div>
       </div>
     );

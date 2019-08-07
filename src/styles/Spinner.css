@@ -14,6 +14,7 @@
   left: 50%;
   color: white;
   -webkit-transform: translate(-50%, 60%);
+  -ms-transform: translate(-50%, 60%);
   transform: translate(-50%, 60%);
 }
 
@@ -25,6 +26,7 @@
   left: 50%;
 
   -webkit-transform: translate(-50%, -10%) rotateZ(45deg);
+  -ms-transform: translate(-50%, -10%) rotate(45deg);
   transform: translate(-50%, -10%) rotateZ(45deg);
 }
 
@@ -56,16 +58,19 @@
 
 .sk-folding-cube .sk-cube2 {
   -webkit-transform: scale(1.1) rotateZ(90deg);
+  -ms-transform: scale(1.1) rotate(90deg);
   transform: scale(1.1) rotateZ(90deg);
 }
 
 .sk-folding-cube .sk-cube3 {
   -webkit-transform: scale(1.1) rotateZ(180deg);
+  -ms-transform: scale(1.1) rotate(180deg);
   transform: scale(1.1) rotateZ(180deg);
 }
 
 .sk-folding-cube .sk-cube4 {
   -webkit-transform: scale(1.1) rotateZ(270deg);
+  -ms-transform: scale(1.1) rotate(270deg);
   transform: scale(1.1) rotateZ(270deg);
 }
 

@@ -6,12 +6,18 @@
   left: 0;
   text-align: center;
   z-index: 99;
+  -webkit-transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  -o-transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  -webkit-animation-delay: 0.1s;
   animation-delay: 0.1s;
+  -webkit-animation-duration: 1s;
   animation-duration: 1s;
 }
 
 .hideNav {
+  -webkit-transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  -o-transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   top: -115px;
 }
@@ -26,10 +32,12 @@
 }
 
 .navigation .formCount {
-  font-size: 15px;
+  font-size: 18px;
+  letter-spacing: 2px;
   line-height: 20px;
   padding: 15px 0;
-  font-family: 'Chelsea Market', cursive;
+  font-weight: bolder;
+  font-family: 'Indie Flower', cursive;
 }
 .navigation .formCount span {
   letter-spacing: 2px;
@@ -37,6 +45,8 @@
 
 @media (max-width: 850px) {
   .hideNav {
+    -webkit-transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    -o-transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     top: -105px;
   }
