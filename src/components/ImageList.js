@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import '../styles/ImageList.css';
 import ImageComp from './ImageComp';
 import Spinner from './Spinner';
+import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 
 const imagesLoaded = parentNode => {
   const imgEles = [...parentNode.querySelectorAll('img')];
@@ -15,7 +16,7 @@ const imagesLoaded = parentNode => {
   return true;
 };
 
-export default class ImageList extends React.Component {
+export default class ImageList extends Component {
   constructor(props) {
     super(props);
 
@@ -27,9 +28,11 @@ export default class ImageList extends React.Component {
 
   renderSpinner = () => {
     if (!this.state.loading) {
+      clearAllBodyScrollLocks();
       document.documentElement.classList.remove('noScroll');
       return null;
     }
+    disableBodyScroll(document.body);
     document.documentElement.classList.add('noScroll');
     return <Spinner />;
   };

@@ -106,6 +106,7 @@ export default class App extends React.Component {
     if (scrolling) return;
 
     if (totalPage <= pageCount) return;
+
     let scrollTop =
       (document.documentElement && document.documentElement.scrollTop) ||
       document.body.scrollTop;
