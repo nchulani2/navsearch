@@ -16,7 +16,7 @@ class FormInput extends Component {
   /* -------------------------------------------------------------------------- */
 
   state = {
-    userText: ''
+    userText: this.props.data !== null ? this.props.data.query : ''
   };
   // The word can change, instead of onInputChange, it can be inputChanger or whatever you wanna call it, user data will always be inside the event object inside event.target.value
   // NOTE When we invoke a function, it essentially rips the class out of the function, hence why we get this being defined as "undefined"
@@ -59,7 +59,7 @@ class FormInput extends Component {
 }
 
 const mapStateToProps = state => {
-  return { images: state.images };
+  return { data: state.data };
 };
 
 export default connect(

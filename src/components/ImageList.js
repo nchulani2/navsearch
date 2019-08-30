@@ -16,14 +16,9 @@ const imagesLoaded = parentNode => {
 };
 
 export default class ImageList extends Component {
-  constructor(props) {
-    super(props);
-
-    this.galleryEle = React.createRef();
-    this.state = {
-      loading: true
-    };
-  }
+  state = {
+    loading: true
+  };
 
   renderSpinner = () => {
     if (!this.state.loading) {
@@ -51,7 +46,6 @@ export default class ImageList extends Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <div className="imageList">
         <div className="gallery" ref={ele => (this.galleryEle = ele)}>

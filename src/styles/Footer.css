@@ -1,13 +1,9 @@
 .footer {
-  background: rgba(235, 228, 228, 0.7);
-  padding: 10px 0;
-  color: black;
-  font-weight: bolder;
-  letter-spacing: 3px;
-  font-family: 'Indie Flower', cursive;
-  position: fixed;
-  height: 3rem;
-  width: 100%;
+  position: absolute;
   bottom: 0;
+  background: #f1f1f1;
+  width: 100%;
   text-align: center;
+  padding: 10px 0;
+  animation-delay: 0.5s;
 }

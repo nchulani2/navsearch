@@ -12,6 +12,11 @@ class Navigation extends Component {
     window.addEventListener('scroll', this.handleScroll);
   };
 
+  // need to unmount componenets when routing
+  componentWillUnmount = () => {
+    window.removeEventListener('scroll', this.handleScroll);
+  };
+
   handleScroll = e => {
     const { prevScrollPos } = this.state;
     const currScrollPos = window.pageYOffset;
@@ -31,10 +36,7 @@ class Navigation extends Component {
 
   render() {
     return (
-      <div
-        className="navigation animated fadeInDown"
-        data-wow-duration="1.5s"
-        data-wow-delay="0.1s">
+      <div className="navigation animated fadeInDown">
         <div className="ui container">
           <div className="flexTitle">
             <div>
@@ -46,18 +48,26 @@ class Navigation extends Component {
               <Link to="/about">
                 <div className="linkEle">About</div>
               </Link>
-              <Link to="/register">
-                <div className="linkEle">Register</div>
+              <Link style={{ pointerEvents: 'none' }} to="/register">
+                <div
+                  className="linkEle"
+                  style={{ textDecoration: 'line-through' }}>
+                  Register
+                </div>
               </Link>
-              <Link to="/login">
-                <div className="linkEle">Login</div>
+              <Link style={{ pointerEvents: 'none' }} to="/login">
+                <div
+                  className="linkEle"
+                  style={{ textDecoration: 'line-through' }}>
+                  Login
+                </div>
               </Link>
             </div>
           </div>
 
           <FormInput />
           <div className="formCount">
-            Total count: <span>{this.props.imageCount}</span> images
+            Total count: <span>{this.props.total}</span> images
           </div>
         </div>
       </div>
