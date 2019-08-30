@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import '../styles/ImageList.css';
 import ImageComp from './ImageComp';
 import Spinner from './Spinner';
-import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 
 const imagesLoaded = parentNode => {
   const imgEles = [...parentNode.querySelectorAll('img')];
@@ -28,11 +27,10 @@ export default class ImageList extends Component {
 
   renderSpinner = () => {
     if (!this.state.loading) {
-      clearAllBodyScrollLocks();
       document.documentElement.classList.remove('noScroll');
       return null;
     }
-    disableBodyScroll(document.body);
+
     document.documentElement.classList.add('noScroll');
     return <Spinner />;
   };
@@ -54,6 +52,7 @@ export default class ImageList extends Component {
   };
 
   render() {
+    console.log(this.props.images);
     return (
       <div className="imageList">
         <div className="gallery" ref={ele => (this.galleryEle = ele)}>
