@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import '../styles/FormInput.css';
 
+import { connect } from 'react-redux';
+import { getImages } from '../actions';
+
 // There is a common error that occurs here with the keyword "this". The error states "cannot read property "state" of undefined". Basically, this is what we are trying to do, we are trying to access "undefined.state", however, undefined as on onject is well, undefined and nothing exists under it.
-class FormInput extends React.Component {
+class FormInput extends Component {
   /* -------------------------------------------------------------------------- */
   // NOTE THIS IS ONE WAY OF RESOLVING THE "undefined" ISSUE WHEN IT COMES TO INVOKING A FUNCTION USING "this". Ideally, binding that function to the constructor creates an instance of the class with that function
   // constructor(props) {
@@ -13,7 +16,7 @@ class FormInput extends React.Component {
   /* -------------------------------------------------------------------------- */
 
   state = {
-    userText: 'beach'
+    userText: ''
   };
   // The word can change, instead of onInputChange, it can be inputChanger or whatever you wanna call it, user data will always be inside the event object inside event.target.value
   // NOTE When we invoke a function, it essentially rips the class out of the function, hence why we get this being defined as "undefined"
@@ -25,7 +28,7 @@ class FormInput extends React.Component {
 
     // in a class-based component, referencing props is done through "this" rather than just props, in this case, 'this' refers to class FormInput
 
-    this.props.submitNewData(this.state.userText);
+    this.props.getImages(this.state.userText);
   };
 
   render() {
@@ -55,4 +58,11 @@ class FormInput extends React.Component {
   }
 }
 
-export default FormInput;
+const mapStateToProps = state => {
+  return { images: state.images };
+};
+
+export default connect(
+  mapStateToProps,
+  { getImages }
+)(FormInput);

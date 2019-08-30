@@ -62,3 +62,14 @@
     column-count: 6;
   }
 }
+
+@media (max-width: 850px) {
+  .imageList .gallery {
+    margin-top: 12rem;
+  }
+}
+@media (max-width: 499px) {
+  .imageList .gallery {
+    margin-top: 14.5rem;
+  }
+}

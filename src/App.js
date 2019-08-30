@@ -1,9 +1,11 @@
 import React from 'react';
-import unsplash from '../api/unsplashapi';
-import ImageList from './ImageList';
-import Footer from './Footer';
-import Navigation from './Navigation';
-import Error from './Error';
+import unsplash from './api/unsplashapi';
+
+// Pages
+import Home from './pages/Home';
+
+// Routing
+import { Route } from 'react-router-dom';
 
 // CAN ONLY USE "export default" ON THE SAME LINE WITH CLASS BASED COMPONENTS
 export default class App extends React.Component {
@@ -92,7 +94,7 @@ export default class App extends React.Component {
 
   componentDidMount = () => {
     // initial load
-    this.onLoadPage();
+    // this.onLoadPage();
     window.addEventListener('scroll', this.handleScroll);
   };
 
@@ -127,47 +129,13 @@ export default class App extends React.Component {
   };
 
   render() {
-    if (this.state.imageCount) {
-      return (
-        <div style={{ width: '100%', height: '100%' }}>
-          <div
-            style={{
-              width: '100%',
-              height: '100%'
-            }}>
-            {/* Props only can go down, we need a way to communicate from child to parent => send them through as a function invoked */}
-            <Navigation
-              imageCount={this.state.imageCount}
-              submitNew={this.onSearchSubmit}
-            />
-            {/* props.children is undefined unless we are nesting components */}
-            <ImageList
-              className="imageListPar"
-              images={this.state.image}
-              imageCount={this.state.imageCount}
-              totalPages={this.state.totalPage}
-              pageCount={this.state.pageCount}
-            />
-          </div>
-          <Footer />
-        </div>
-      );
-    } else if (this.state.imageCount === 0) {
-      return (
-        <div style={{ width: '100%' }}>
-          <div style={{ width: '100%' }}>
-            {/* Props only can go down, we need a way to communicate from child to parent => send them through as a function invoked */}
-
-            <Navigation
-              imageCount={this.state.imageCount}
-              submitNew={this.onSearchSubmit}
-            />
-            <Error userInput={this.state.userInput} />
-          </div>
-          <Footer />
-        </div>
-      );
-    }
-    return null;
+    return (
+      <div>
+        <Route exact path="/" component={Home}></Route>
+        <Route exact path="/about" component={Home}></Route>
+        <Route exact path="/register" component={Home}></Route>
+        <Route exact path="/login" component={Home}></Route>
+      </div>
+    );
   }
 }
