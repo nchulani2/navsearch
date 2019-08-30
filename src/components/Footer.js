@@ -3,10 +3,15 @@ import '../styles/Footer.css';
 
 const Footer = props => {
   return (
-    <div className="footer">
-      <i className="ui small code icon" />
-      <div style={{ display: 'inline' }}>Developed by Naveen Chulani </div>
-      <i className="ui small code icon" />
+    <div className="animated bounceInUp footer">
+      <h3
+        style={{
+          fontFamily: 'Indie Flower, cursive',
+          fontWeight: 'bolder',
+          lineHeight: '1.5rem'
+        }}>
+        Developed by Naveen Chulani
+      </h3>
     </div>
   );
 };

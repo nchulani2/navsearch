@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import FormInput from './FormInput';
 
 import '../styles/Navigation.css';
@@ -11,6 +12,7 @@ class Navigation extends Component {
     window.addEventListener('scroll', this.handleScroll);
   };
 
+  // need to unmount componenets when routing
   componentWillUnmount = () => {
     window.removeEventListener('scroll', this.handleScroll);
   };
@@ -34,14 +36,39 @@ class Navigation extends Component {
 
   render() {
     return (
-      <div
-        className="navigation animated fadeInDown"
-        data-wow-duration="1.5s"
-        data-wow-delay="0.1s">
-        <div className="headerPar">navsearch</div>
-        <FormInput submitNewData={this.props.submitNew} />
-        <div className="formCount">
-          Total count: <span>{this.props.imageCount}</span> images
+      <div className="navigation animated fadeInDown">
+        <div className="ui container">
+          <div className="flexTitle">
+            <div>
+              <Link to="/">
+                <div className="headerPar">navsearch</div>
+              </Link>
+            </div>
+            <div className="flexLinks">
+              <Link to="/about">
+                <div className="linkEle">About</div>
+              </Link>
+              <Link style={{ pointerEvents: 'none' }} to="/register">
+                <div
+                  className="linkEle"
+                  style={{ textDecoration: 'line-through' }}>
+                  Register
+                </div>
+              </Link>
+              <Link style={{ pointerEvents: 'none' }} to="/login">
+                <div
+                  className="linkEle"
+                  style={{ textDecoration: 'line-through' }}>
+                  Login
+                </div>
+              </Link>
+            </div>
+          </div>
+
+          <FormInput />
+          <div className="formCount">
+            Total count: <span>{this.props.total}</span> images
+          </div>
         </div>
       </div>
     );

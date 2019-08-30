@@ -70,8 +70,8 @@ body {
   width: 20em;
   height: 40em;
   text-align: center;
-  -webkit-animation-delay: 2.5s;
-  animation-delay: 2.5s;
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
   -webkit-animation-duration: 0.5s;
   animation-duration: 0.5s;
 }
@@ -83,12 +83,6 @@ body {
   line-height: 40px;
   font-size: 40px;
 }
-.typed-cursor {
-  visibility: hidden;
-}
-.typed-cursor.typed-cursor--blink {
-  visibility: hidden;
-}
 
 .introImg {
   position: absolute;
@@ -96,8 +90,8 @@ body {
   left: 90px;
   width: 100px;
   height: 100px;
-  -webkit-animation-delay: 1.2s;
-  animation-delay: 1.2s;
+  -webkit-animation-delay: 0.65s;
+  animation-delay: 0.65s;
 }
 
 .loader--hide {

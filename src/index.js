@@ -1,29 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+import App from './App';
 
-const loader = document.querySelector('.loader');
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import reducers from './reducers';
+import thunk from 'redux-thunk';
+
+import { BrowserRouter as Router } from 'react-router-dom';
 
 class Index extends React.Component {
-  hideLoader = () => {
-    loader.classList.add('loader--hide');
+  componentDidMount = () => {
+    document.querySelector('.loader').classList.add('loader--hide');
   };
 
-  showLoader = () => {
-    loader.classList.remove('loader--hide');
-  };
-  componentDidMount = () => {
-    this.hideLoader();
-  };
   render() {
     return (
-      <div>
-        <App />
-      </div>
+      <Provider
+        store={createStore(
+          reducers,
+          compose(
+            applyMiddleware(thunk),
+            window.__REDUX_DEVTOOLS_EXTENSION__ &&
+              window.__REDUX_DEVTOOLS_EXTENSION__()
+          )
+        )}>
+        <Router>
+          <App></App>
+        </Router>
+      </Provider>
     );
   }
 }
 
 setTimeout(() => {
-  ReactDOM.render(<Index />, document.querySelector('#root'));
-}, 3000);
+  ReactDOM.render(<Index></Index>, document.querySelector('#root'));
+}, 2500);
