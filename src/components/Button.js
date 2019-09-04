@@ -1,10 +1,10 @@
 import React from 'react';
 import '../styles/Button.css';
 
-const Button = () => {
+const Button = props => {
   return (
-    <button className="button">
-      <i className="long arrow alternate left icon"></i> Home
+    <button className="button" style={{ margin: props.margin }}>
+      <i className={props.iconClass}></i> {props.buttonText}
     </button>
   );
 };

@@ -1,78 +1,92 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import FormInput from './FormInput';
-
+import Header from './Header';
+import Footer from './Footer';
 import '../styles/Navigation.css';
 
+// import { connect } from 'react-redux';
+// import { openNav, closeNav } from '../actions';
 class Navigation extends Component {
   state = {
-    prevScrollPos: window.pageYOffset
+    isOpen: false
   };
+
   componentDidMount = () => {
-    window.addEventListener('scroll', this.handleScroll);
+    document.getElementById('overlayNav').classList.add('hiddenBody');
   };
-
-  // need to unmount componenets when routing
-  componentWillUnmount = () => {
-    window.removeEventListener('scroll', this.handleScroll);
-  };
-
-  handleScroll = e => {
-    const { prevScrollPos } = this.state;
-    const currScrollPos = window.pageYOffset;
-    const visible = currScrollPos < prevScrollPos;
-    this.setState({
-      prevScrollPos: currScrollPos
-    });
-
-    if (visible) {
-      document.querySelector('.navigation').classList.remove('hideNav');
-    } else if (currScrollPos < 15) {
-      document.querySelector('.navigation').classList.remove('hideNav');
-    } else {
-      document.querySelector('.navigation').classList.add('hideNav');
+  toggleOverlay = e => {
+    e.preventDefault();
+    const { isOpen } = this.state;
+    if (isOpen === false) {
+      document.getElementById('overlayNav').classList.remove('hiddenBody');
     }
+    this.setState({
+      isOpen: !isOpen
+    });
   };
-
   render() {
     return (
-      <div className="navigation animated fadeInDown">
-        <div className="ui container">
-          <div className="flexTitle">
-            <div>
-              <Link to="/">
-                <div className="headerPar">navsearch</div>
-              </Link>
-            </div>
-            <div className="flexLinks">
-              <Link to="/about">
-                <div className="linkEle">About</div>
-              </Link>
-              <Link style={{ pointerEvents: 'none' }} to="/register">
-                <div
-                  className="linkEle"
-                  style={{ textDecoration: 'line-through' }}>
-                  Register
-                </div>
-              </Link>
-              <Link style={{ pointerEvents: 'none' }} to="/login">
-                <div
-                  className="linkEle"
-                  style={{ textDecoration: 'line-through' }}>
-                  Login
-                </div>
-              </Link>
-            </div>
+      <div className="navigation">
+        <button
+          onClick={this.toggleOverlay}
+          className="buttonNav animated bounceInRight faster">
+          <i
+            className={`${this.state.isOpen ? 'close icon' : 'bars icon'}`}></i>
+        </button>
+        <div
+          id="overlayNav"
+          className={`overlayNav delay-0s ${
+            this.state.isOpen
+              ? 'animated slideInRight'
+              : 'animated slideOutRight'
+          }`}>
+          <Link
+            to="/"
+            onClick={() => {
+              this.setState({ isOpen: !this.state.isOpen });
+            }}>
+            <Header color="white"></Header>
+          </Link>
+          <div className="flexLinks">
+            <Link
+              className="linkEle"
+              to="/about"
+              onClick={() => {
+                this.setState({ isOpen: false });
+              }}>
+              About
+            </Link>
+            <Link
+              className="linkEle"
+              to="/register"
+              onClick={() => {
+                this.setState({ isOpen: false });
+              }}>
+              Register
+            </Link>
+            <Link
+              className="linkEle"
+              to="/login"
+              onClick={() => {
+                this.setState({ isOpen: false });
+              }}>
+              Login
+            </Link>
           </div>
-
-          <FormInput />
-          <div className="formCount">
-            Total count: <span>{this.props.total}</span> images
-          </div>
+          <Footer></Footer>
         </div>
       </div>
     );
   }
 }
 
-export default Navigation;
+// const mapStateToProps = state => {
+//   return { data: state };
+// };
+
+export default // connect(
+// mapStateToProps,
+// { openNav, closeNav }
+// )(
+Navigation;
+// );

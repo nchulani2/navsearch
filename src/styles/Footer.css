@@ -1,9 +1,9 @@
 .footer {
   position: absolute;
   bottom: 0;
-  background: #f1f1f1;
+  background: transparent;
+  color: white;
   width: 100%;
   text-align: center;
   padding: 10px 0;
-  animation-delay: 0.5s;
 }

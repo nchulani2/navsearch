@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Navigation from '../components/Navigation';
+import FormNav from '../components/FormNav';
 import ImageList from '../components/ImageList';
 import { connect } from 'react-redux';
 
@@ -15,7 +15,7 @@ class Home extends Component {
   };
 
   handleScroll = e => {
-    const { scrolling, total_pages, page } = this.props.data;
+    const { scrolling, total_pages, page } = this.props.imageState;
 
     if (scrolling) return;
 
@@ -41,7 +41,7 @@ class Home extends Component {
 
   divStyle = {
     position: 'fixed',
-    top: '60%',
+    top: '65%',
     left: '50%',
     transform: 'translate(-50%,-50%)',
     textAlign: 'center',
@@ -49,12 +49,16 @@ class Home extends Component {
   };
 
   render() {
-    const { data } = this.props;
+    const { imageState } = this.props;
 
-    if (data !== null && data.images.length === 0) {
+    if (imageState !== null && imageState.images.length === 0) {
       return (
-        <div style={{ width: '100%', height: '100%' }}>
-          <Navigation total={data.total} />
+        <div
+          style={{
+            width: '100%',
+            height: '100%'
+          }}>
+          <FormNav total={imageState.total} />
           <div className="animated fadeIn" style={{ ...this.divStyle }}>
             <h1
               style={{
@@ -63,26 +67,30 @@ class Home extends Component {
                 letterSpacing: '2px',
                 lineHeight: '3rem'
               }}>
-              Sorry, no images found for {`"${data.query}"`}
+              Sorry, no imageState found for {`"${imageState.query}"`}
             </h1>
           </div>
         </div>
       );
-    } else if (data !== null && data.images.length !== 0) {
+    } else if (imageState !== null && imageState.images.length !== 0) {
       return (
-        <div style={{ width: '100%', height: '100%' }}>
-          <Navigation total={data.total} />
+        <div
+          style={{
+            width: '100%',
+            height: '100%'
+          }}>
+          <FormNav total={imageState.total} />
 
-          <ImageList images={data.images} imageCount={data.total} />
+          <ImageList images={imageState.images} imageCount={imageState.total} />
         </div>
       );
     }
     return (
       <div style={{ width: '100%', height: '100vh' }}>
-        <Navigation total={'0'} />
+        <FormNav total={'0'} />
 
         <div className="animated fadeIn" style={{ ...this.divStyle }}>
-          <h1
+          <h3
             style={{
               fontFamily: 'Indie Flower, cursive',
               fontWeight: 'bolder',
@@ -91,7 +99,7 @@ class Home extends Component {
             }}>
             Thanks to the Unsplash API, you can immediately start searching for
             any images!
-          </h1>
+          </h3>
         </div>
       </div>
     );
@@ -100,7 +108,7 @@ class Home extends Component {
 
 const mapStateToProps = state => {
   return {
-    data: state.data
+    imageState: state.data
   };
 };
 

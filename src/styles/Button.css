@@ -1,17 +1,36 @@
 .button {
-  padding: 15px;
+  padding: 10px 20px;
   background: transparent;
-  color: rgb(255, 91, 91);
+  color: black;
   outline: none;
   cursor: pointer;
-  border: thin solid rgb(255, 91, 91);
+  border: thin solid black;
   border-radius: 4px;
   transition: all ease 0.15s;
 }
+.button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  transition: all ease 0.15s;
+  height: 100%;
+  background: rgb(200, 70, 70);
+  z-index: -1;
+}
 
+.button:hover::after {
+  width: 100%;
+  transition: all ease 0.15s;
+}
 .button:hover {
   transition: all ease 0.15s;
-  background: rgb(255, 91, 91);
-  border: thin solid white;
   color: white;
+}
+
+@media (max-width: 499px) {
+  .button {
+    padding: 10px 10px;
+  }
 }

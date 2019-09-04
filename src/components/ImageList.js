@@ -36,7 +36,6 @@ export default class ImageList extends Component {
   renderImage = image => {
     return (
       // we have to include a key for a LIST of items, a better way is to create another component, that way we just need to pass that component one key
-
       <ImageComp
         key={image.id}
         imageCont={image}

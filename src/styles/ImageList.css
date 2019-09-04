@@ -4,7 +4,7 @@
 }
 
 .imageList .gallery {
-  margin-top: 13rem;
+  margin-top: 10rem;
 }
 
 .imageList .gallery .containerPar {
@@ -65,11 +65,11 @@
 
 @media (max-width: 850px) {
   .imageList .gallery {
-    margin-top: 12rem;
+    margin-top: 9rem;
   }
 }
 @media (max-width: 499px) {
   .imageList .gallery {
-    margin-top: 14.5rem;
+    margin-top: 9rem;
   }
 }

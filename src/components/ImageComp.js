@@ -13,7 +13,7 @@ export default class ImageComp extends React.Component {
 
     return (
       <div className="imageComp">
-        <div className="content" onClick={this.handleModalOpen}>
+        <div className="content">
           <div className="content-overlay" />
           <img
             id="imageEle"

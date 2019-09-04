@@ -3,12 +3,13 @@ import '../styles/Footer.css';
 
 const Footer = props => {
   return (
-    <div className="animated bounceInUp footer">
+    <div className="footer">
       <h3
         style={{
           fontFamily: 'Indie Flower, cursive',
           fontWeight: 'bolder',
-          lineHeight: '1.5rem'
+          lineHeight: '1rem',
+          fontSize: '15px'
         }}>
         Developed by Naveen Chulani
       </h3>

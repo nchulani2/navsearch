@@ -1,0 +1,16 @@
+.header {
+  line-height: 30px;
+  padding: 1rem 0 5px 0;
+  font-family: 'Indie Flower', cursive;
+  font-weight: bolder;
+  letter-spacing: 2px;
+  font-size: 2rem;
+  transition: 0.15s ease;
+  width: 150px;
+  text-align: center;
+  margin: 0 auto;
+  cursor: pointer;
+}
+.header:hover {
+  transition: 0.15s ease;
+}

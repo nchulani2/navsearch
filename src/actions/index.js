@@ -1,5 +1,6 @@
 import unsplash from '../api/unsplashapi';
 
+// IMAGE ACTIONS
 export const getImages = inputText => async dispatch => {
   dispatch(reset());
   const response = await unsplash.get('/search/photos', {
@@ -40,3 +41,13 @@ const scrolling = () => dispatch => {
 const reset = () => dispatch => {
   dispatch({ type: 'RESET' });
 };
+
+// NAVBAR ACTIONS
+// export const openNav = () => async dispatch => {
+//   dispatch({ type: 'OPEN_NAV', payload: true });
+// };
+// export const closeNav = () => async dispatch => {
+//   dispatch({ type: 'CLOSE_NAV', payload: false });
+// };
+
+// USER ACTIONS
