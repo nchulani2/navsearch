@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import reducers from './reducers';
 import thunk from 'redux-thunk';
 
@@ -16,15 +16,7 @@ class Index extends React.Component {
 
   render() {
     return (
-      <Provider
-        store={createStore(
-          reducers,
-          compose(
-            applyMiddleware(thunk),
-            window.__REDUX_DEVTOOLS_EXTENSION__ &&
-              window.__REDUX_DEVTOOLS_EXTENSION__()
-          )
-        )}>
+      <Provider store={createStore(reducers, applyMiddleware(thunk))}>
         <Router>
           <App></App>
         </Router>
