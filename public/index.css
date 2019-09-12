@@ -46,59 +46,7 @@ body {
   position: relative;
   min-height: 100%;
   height: auto;
-  /* -------------------------------------------------------------------------- */
-  /* NOTE BODY BACKGROUND */
-  /* background: #dae2f8; 
-    background: -webkit-linear-gradient(
-      to right,
-      #dae2f8,
-      #d6a4a4
-    ); 
-    background: linear-gradient(to right, #dae2f8, #d6a4a4); */
-  /* -------------------------------------------------------------------------- */
 }
 .noScroll {
   overflow-y: hidden;
-}
-.loader {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  width: 20em;
-  height: 40em;
-  text-align: center;
-  -webkit-animation-delay: 2s;
-  animation-delay: 2s;
-  -webkit-animation-duration: 0.5s;
-  animation-duration: 0.5s;
-}
-
-#typed {
-  position: relative;
-  font-family: 'Indie Flower', cursive;
-  top: 200px;
-  line-height: 40px;
-  font-size: 40px;
-}
-
-.introImg {
-  position: absolute;
-  top: 250px;
-  left: 90px;
-  width: 100px;
-  height: 100px;
-  -webkit-animation-delay: 0.65s;
-  animation-delay: 0.65s;
-}
-
-.loader--hide {
-  display: none;
-}
-
-.hiddenBody {
-  visibility: hidden;
-  display: none;
 }

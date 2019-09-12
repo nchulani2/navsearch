@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 // Pages
 import Home from './pages/Home';
@@ -13,7 +13,7 @@ import Navigation from './components/Navigation';
 import { Route, Switch } from 'react-router-dom';
 
 // CAN ONLY USE "export default" ON THE SAME LINE WITH CLASS BASED COMPONENTS
-export default class App extends React.Component {
+export default class App extends Component {
   render() {
     return (
       <div>
