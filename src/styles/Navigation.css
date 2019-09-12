@@ -54,6 +54,7 @@
   font-size: 20px;
   letter-spacing: 2px;
   text-transform: uppercase;
+  animation-delay: 0.3s;
 }
 .navigation .flexLinks .linkEle::after {
   content: '';
@@ -68,4 +69,9 @@
 .navigation .flexLinks .linkEle:hover::after {
   width: 100%;
   transition: all 0.15s ease;
+}
+
+.hiddenBody {
+  visibility: hidden;
+  display: none;
 }

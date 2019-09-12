@@ -3,7 +3,10 @@ import '../styles/Footer.css';
 
 const Footer = props => {
   return (
-    <div className="footer">
+    <div
+      className={`footer ${
+        props.navState ? 'animated fadeInUp faster' : 'hiddenBody'
+      }`}>
       <h3
         style={{
           fontFamily: 'Indie Flower, cursive',

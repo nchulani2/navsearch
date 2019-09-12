@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import '../styles/Navigation.css';
+import search from '../images/search.jpg';
 
 // import { connect } from 'react-redux';
 // import { openNav, closeNav } from '../actions';
@@ -35,45 +36,65 @@ class Navigation extends Component {
         </button>
         <div
           id="overlayNav"
-          className={`overlayNav delay-0s ${
+          className={`overlayNav delay-0s faster ${
             this.state.isOpen
               ? 'animated slideInRight'
               : 'animated slideOutRight'
           }`}>
-          <Link
-            to="/"
-            onClick={() => {
-              this.setState({ isOpen: !this.state.isOpen });
-            }}>
-            <Header color="white"></Header>
-          </Link>
+          <div
+            style={{ animationDelay: '0.3s' }}
+            className={
+              this.state.isOpen ? 'animated fadeInUp faster' : 'hiddenBody'
+            }>
+            <Link
+              to="/"
+              onClick={() => {
+                this.setState({ isOpen: !this.state.isOpen });
+              }}>
+              <Header color="white"></Header>
+            </Link>
+            <div style={{ textAlign: 'center' }}>
+              <img
+                style={{ width: '40px' }}
+                src={search}
+                alt="search icon"></img>
+            </div>
+          </div>
           <div className="flexLinks">
             <Link
-              className="linkEle"
+              className={`linkEle ${
+                this.state.isOpen ? 'animated fadeInUp faster' : 'hiddenBody'
+              }`}
               to="/about"
               onClick={() => {
                 this.setState({ isOpen: false });
               }}>
               About
             </Link>
+
             <Link
-              className="linkEle"
-              to="/register"
-              onClick={() => {
-                this.setState({ isOpen: false });
-              }}>
-              Register
-            </Link>
-            <Link
-              className="linkEle"
+              className={`linkEle ${
+                this.state.isOpen ? 'animated fadeInUp faster' : 'hiddenBody'
+              }`}
               to="/login"
               onClick={() => {
                 this.setState({ isOpen: false });
               }}>
               Login
             </Link>
+            <Link
+              className={`linkEle ${
+                this.state.isOpen ? 'animated fadeInUp faster' : 'hiddenBody'
+              }`}
+              to="/register"
+              onClick={() => {
+                this.setState({ isOpen: false });
+              }}>
+              Register
+            </Link>
           </div>
-          <Footer></Footer>
+
+          <Footer navState={this.state.isOpen}></Footer>
         </div>
       </div>
     );
