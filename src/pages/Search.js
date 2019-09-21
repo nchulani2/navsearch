@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../styles/pages/Search.css';
-import FormNav from '../components/FormNav';
+import FormInput from '../components/FormInput';
 import { getMore } from '../actions';
+import ImageList from '../components/ImageList';
 
 class Search extends Component {
+  componentDidMount = () => {
+    window.addEventListener('scroll', this.handleScroll);
+  };
+  componentWillUnmount = () => {
+    window.addEventListener('scroll', this.handleScroll);
+  };
   handleScroll = e => {
     const { scrolling, total_pages, page } = this.props.imageState;
 
@@ -25,13 +32,20 @@ class Search extends Component {
     let scrolledToBottom =
       Math.ceil(scrollTop + clientHeight) >= scrollHeight - 100;
     if (scrolledToBottom) {
-      // this.props.listMoreImages();
+      this.props.getMore();
     }
   };
   render() {
+    const { imageState } = this.props;
+    console.log(imageState);
     return (
-      <div className="sectioning">
-        <FormNav></FormNav>
+      <div className="sectioning" style={{ height: '100%' }}>
+        <FormInput></FormInput>
+        {imageState !== null &&
+        imageState.imageData.length !== 0 &&
+        !imageState.loading ? (
+          <ImageList images={imageState.imageData}></ImageList>
+        ) : null}
       </div>
     );
   }

@@ -60,12 +60,11 @@ export const getImages = inputText => async dispatch => {
       page: 1
     }
   });
-  console.log(response);
 
-  // dispatch({
-  //   type: 'GET_IMAGES',
-  //   payload: { data: response.data, input: inputText, page: 1 }
-  // });
+  dispatch({
+    type: 'GET_IMAGES',
+    payload: { data: response.data, input: inputText, page: 1 }
+  });
 };
 
 export const getMore = () => async (dispatch, getState) => {
