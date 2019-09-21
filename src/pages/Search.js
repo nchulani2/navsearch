@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import '../styles/pages/Search.css';
 import FormInput from '../components/FormInput';
 import { getMore } from '../actions';
 import ImageList from '../components/ImageList';
