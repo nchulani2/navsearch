@@ -37,7 +37,6 @@ class Search extends Component {
   };
   render() {
     const { imageState } = this.props;
-    console.log(imageState);
     return (
       <div className="sectioning" style={{ height: '100%' }}>
         <FormInput></FormInput>
