@@ -1,11 +1,11 @@
 .formInput {
   position: relative;
   width: 100%;
-  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .formInput #inputEle {
-  width: 80%;
+  width: 500px;
   height: 4rem;
   -webkit-transition: all linear 0.1s;
   -o-transition: all linear 0.1s;
@@ -14,11 +14,15 @@
 
 .formInput #inputEle .focusedEle {
   font-size: 2em;
-  border-radius: 80px;
+  border-radius: 4px;
   -webkit-transition: all linear 0.1s;
   -o-transition: all linear 0.1s;
   transition: all linear 0.1s;
   background: #f5f3ee;
+}
+
+.formInput #inputEle .focusedEle::placeholder {
+  color: rgba(0, 0, 0, 0.2);
 }
 
 .formInput #inputEle .focusedEle:focus {
@@ -33,20 +37,21 @@
   font-size: 2.25rem;
 }
 
-@media (max-width: 850px) {
+@media (max-width: 600px) {
   .formInput #inputEle {
-    height: 3rem;
+    width: 280px;
     -webkit-transition: all linear 0.1s;
     -o-transition: all linear 0.1s;
     transition: all linear 0.1s;
   }
   .formInput #inputEle .focusedEle {
-    font-size: 1.5rem;
+    font-size: 1.5em;
     -webkit-transition: all linear 0.1s;
     -o-transition: all linear 0.1s;
     transition: all linear 0.1s;
   }
+
   .formInput #inputEle #iconEle {
-    font-size: 1rem;
+    font-size: 1.55rem;
   }
 }

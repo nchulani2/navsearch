@@ -1,7 +1,7 @@
 .navigation {
   position: fixed;
-  bottom: 10px;
-  right: 10px;
+  top: 10px;
+  left: 10px;
   width: 40px;
   height: 40px;
   z-index: 10;
@@ -29,7 +29,7 @@
   position: fixed;
   z-index: 8;
   top: 0;
-  right: 0;
+  left: 0;
   height: 100vh;
   width: 320px;
   background: rgba(0, 0, 0, 0.8);
@@ -45,15 +45,16 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  font-family: 'Indie Flower', cursive;
 }
 
 .navigation .flexLinks .linkEle {
   padding: 15px 0;
   margin: 10px 0;
   color: white;
-  font-size: 20px;
+  font-size: 30px;
+  line-height: 30px;
   letter-spacing: 2px;
-  text-transform: uppercase;
   animation-delay: 0.3s;
 }
 .navigation .flexLinks .linkEle::after {
@@ -69,6 +70,11 @@
 .navigation .flexLinks .linkEle:hover::after {
   width: 100%;
   transition: all 0.15s ease;
+}
+
+.transIt {
+  transform: translate(320px, 0);
+  transition: all ease 0.3s;
 }
 
 .hiddenBody {

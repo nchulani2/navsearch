@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 
 // Pages
 import Home from './pages/Home';
-import About from './pages/About';
-import Register from './pages/Register';
-import Login from './pages/Login';
+import Gallery from './pages/Gallery';
+import Search from './pages/Search';
 import Error from './pages/Error';
 
 import Navigation from './components/Navigation';
@@ -19,9 +18,8 @@ export default class App extends Component {
       <div>
         <Switch>
           <Route exact path="/" component={Home}></Route>
-          <Route path="/about" component={About}></Route>
-          <Route path="/register" component={Register}></Route>
-          <Route path="/login" component={Login}></Route>
+          <Route path="/gallery" component={Gallery}></Route>
+          <Route path="/search" component={Search}></Route>
           <Route component={Error}></Route>
         </Switch>
         <Navigation></Navigation>

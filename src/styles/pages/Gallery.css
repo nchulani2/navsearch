@@ -1,0 +1,19 @@
+.sectioning .headers {
+  text-align: center;
+  font-family: 'Indie Flower', cursive;
+  font-weight: bolder;
+  animation-delay: 0.4s;
+}
+
+.sectioning .headers .listHeader {
+  font-size: 60px;
+  line-height: 60px;
+  margin-top: 30px;
+  text-transform: capitalize;
+}
+
+.sectioning .headers .listSubHeader {
+  font-size: 20px;
+  line-height: 20px;
+  margin-top: 30px;
+}

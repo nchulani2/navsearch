@@ -33,7 +33,7 @@ class FormInput extends Component {
               value={this.state.userText}
               className="focusedEle"
               type="text"
-              placeholder="Find any image. . ."
+              placeholder="Search for images. . ."
               onChange={e => {
                 this.setState({ userText: e.target.value });
               }}

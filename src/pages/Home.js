@@ -1,118 +1,94 @@
 import React, { Component } from 'react';
-import FormNav from '../components/FormNav';
-import ImageList from '../components/ImageList';
-import { connect } from 'react-redux';
-
-import { getMore } from '../actions';
+import Particles from 'react-particles-js';
+import { Link } from 'react-router-dom';
+import '../styles/pages/Home.css';
 
 class Home extends Component {
+  checker = window.innerWidth > 700;
+  state = {
+    value: this.checker ? 25 : 15,
+    size: this.checker ? 60 : 30
+  };
   componentDidMount = () => {
-    window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('resize', this.handleParticles);
   };
-
-  componentWillUnmount = () => {
-    window.removeEventListener('scroll', this.handleScroll);
-  };
-
-  handleScroll = e => {
-    const { scrolling, total_pages, page } = this.props.imageState;
-
-    if (scrolling) return;
-
-    if (total_pages <= page) return;
-
-    let scrollTop =
-      (document.documentElement && document.documentElement.scrollTop) ||
-      document.body.scrollTop;
-
-    let scrollHeight =
-      (document.documentElement && document.documentElement.scrollHeight) ||
-      document.body.scrollHeight;
-
-    let clientHeight =
-      document.documentElement.clientHeight || window.innerHeight;
-
-    let scrolledToBottom =
-      Math.ceil(scrollTop + clientHeight) >= scrollHeight - 100;
-    if (scrolledToBottom) {
-      this.props.getMore();
+  handleParticles = () => {
+    if (window.innerWidth > 700) {
+      this.setState({ value: 25, size: 60 });
+    } else {
+      this.setState({ value: 15, size: 30 });
     }
   };
-
-  divStyle = {
-    position: 'fixed',
-    top: '65%',
-    left: '50%',
-    transform: 'translate(-50%,-50%)',
-    textAlign: 'center',
-    animationDelay: '0.3s'
-  };
-
   render() {
-    const { imageState } = this.props;
-
-    if (imageState !== null && imageState.images.length === 0) {
-      return (
-        <div
-          style={{
-            width: '100%',
-            height: '100%'
-          }}>
-          <FormNav total={imageState.total} />
-          <div className="animated fadeIn" style={{ ...this.divStyle }}>
-            <h1
-              style={{
-                fontFamily: 'Indie Flower, cursive',
-                fontWeight: 'bolder',
-                letterSpacing: '2px',
-                lineHeight: '3rem'
-              }}>
-              Sorry, no imageState found for {`"${imageState.query}"`}
-            </h1>
-          </div>
-        </div>
-      );
-    } else if (imageState !== null && imageState.images.length !== 0) {
-      return (
-        <div
-          style={{
-            width: '100%',
-            height: '100%'
-          }}>
-          <FormNav total={imageState.total} />
-
-          <ImageList images={imageState.images} imageCount={imageState.total} />
-        </div>
-      );
-    }
     return (
-      <div style={{ width: '100%', height: '100vh' }}>
-        <FormNav total={'0'} />
+      <div className="sectioning">
+        <div className="sectionPage animated fadeInUpBig faster">
+          <div className="canvasEle">
+            <Particles
+              className="particleCanv"
+              params={{
+                particles: {
+                  number: {
+                    value: this.state.value,
+                    density: {
+                      enable: false
+                    }
+                  },
+                  color: {
+                    value: ['#ff4b4b']
+                  },
+                  shape: {
+                    stroke: {
+                      width: 3,
+                      color: '#000'
+                    },
+                    type: 'circle'
+                  },
 
-        <div className="animated fadeIn" style={{ ...this.divStyle }}>
-          <h3
-            style={{
-              fontFamily: 'Indie Flower, cursive',
-              fontWeight: 'bolder',
-              letterSpacing: '2px',
-              lineHeight: '3rem'
-            }}>
-            Thanks to the Unsplash API, you can immediately start searching for
-            any images!
-          </h3>
+                  size: {
+                    value: this.state.size,
+                    random: true,
+                    anim: {
+                      enable: false
+                    }
+                  },
+                  opacity: {
+                    value: 1,
+                    random: true,
+                    anim: {
+                      enable: false
+                    }
+                  },
+
+                  line_linked: {
+                    enable: false
+                  },
+                  move: {
+                    random: true,
+                    speed: 3,
+                    direction: 'none',
+                    out_mode: 'out'
+                  }
+                }
+              }}
+            />
+          </div>
+          <div className="homePos">
+            <h3 className="animated fadeIn">
+              Navsearch is a free image search engine built with React and
+              Redux. The images previewed are all available on Unsplash as this
+              site specifically uses their API.
+            </h3>
+            <Link to="/gallery">
+              <button className="button_home animated flipInX" type="submit">
+                View Gallery
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    imageState: state.data
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  { getMore }
-)(Home);
+export default Home;

@@ -1,25 +1,18 @@
 .formnav {
-  background: rgba(225, 225, 225, 0.85);
+  background: transparent;
   position: fixed;
   width: 100%;
-  top: 0;
+  bottom: 0;
   left: 0;
   text-align: center;
   z-index: 1;
   -webkit-transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   -o-transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-  -webkit-animation-delay: 0.1s;
-  animation-delay: 0.1s;
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-}
-
-.hideNav {
-  -webkit-transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-  -o-transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-  top: -80px;
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+  -webkit-animation-duration: 0.6s;
+  animation-duration: 0.6s;
 }
 
 .formnav .formCount {
@@ -32,13 +25,4 @@
 }
 .formnav .formCount span {
   letter-spacing: 2px;
-}
-
-@media (max-width: 850px) {
-  .hideNav {
-    -webkit-transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    -o-transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    top: -65px;
-  }
 }

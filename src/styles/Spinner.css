@@ -7,30 +7,31 @@
   background: rgba(0, 0, 0, 0.8);
   z-index: 60;
 }
-.spinner h1 {
-  position: fixed;
-  font-family: 'Indie Flower', cursive;
-  top: 40%;
+.spinner .spinnerCont {
+  position: absolute;
+  top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.spinner .spinnerCont h1 {
+  font-family: 'Indie Flower', cursive;
   color: white;
-  -webkit-transform: translate(-50%, 60%);
-  -ms-transform: translate(-50%, 60%);
-  transform: translate(-50%, 60%);
+  margin-top: 50px;
 }
 
-.sk-folding-cube {
+.spinner .spinnerCont .sk-folding-cube {
   width: 100px;
   height: 100px;
-  position: fixed;
-  top: 60%;
-  left: 50%;
-
-  -webkit-transform: translate(-50%, -10%) rotateZ(45deg);
-  -ms-transform: translate(-50%, -10%) rotate(45deg);
-  transform: translate(-50%, -10%) rotateZ(45deg);
+  -webkit-transform: rotateZ(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotateZ(45deg);
 }
 
-.sk-folding-cube .sk-cube {
+.spinner .spinnerCont .sk-folding-cube .sk-cube {
   float: left;
   width: 50%;
   height: 50%;
@@ -40,7 +41,7 @@
   transform: scale(1.1);
 }
 
-.sk-folding-cube .sk-cube:before {
+.spinner .spinnerCont .sk-folding-cube .sk-cube:before {
   content: '';
   position: absolute;
   top: 0;
@@ -56,35 +57,35 @@
   transform-origin: 100% 100%;
 }
 
-.sk-folding-cube .sk-cube2 {
+.spinner .spinnerCont .sk-folding-cube .sk-cube2 {
   -webkit-transform: scale(1.1) rotateZ(90deg);
   -ms-transform: scale(1.1) rotate(90deg);
   transform: scale(1.1) rotateZ(90deg);
 }
 
-.sk-folding-cube .sk-cube3 {
+.spinner .spinnerCont .sk-folding-cube .sk-cube3 {
   -webkit-transform: scale(1.1) rotateZ(180deg);
   -ms-transform: scale(1.1) rotate(180deg);
   transform: scale(1.1) rotateZ(180deg);
 }
 
-.sk-folding-cube .sk-cube4 {
+.spinner .spinnerCont .sk-folding-cube .sk-cube4 {
   -webkit-transform: scale(1.1) rotateZ(270deg);
   -ms-transform: scale(1.1) rotate(270deg);
   transform: scale(1.1) rotateZ(270deg);
 }
 
-.sk-folding-cube .sk-cube2:before {
+.spinner .spinnerCont .sk-folding-cube .sk-cube2:before {
   -webkit-animation-delay: 0.3s;
   animation-delay: 0.3s;
 }
 
-.sk-folding-cube .sk-cube3:before {
+.spinner .spinnerCont .sk-folding-cube .sk-cube3:before {
   -webkit-animation-delay: 0.6s;
   animation-delay: 0.6s;
 }
 
-.sk-folding-cube .sk-cube4:before {
+.spinner .spinnerCont .sk-folding-cube .sk-cube4:before {
   -webkit-animation-delay: 0.9s;
   animation-delay: 0.9s;
 }
@@ -132,10 +133,10 @@
 }
 
 @media (max-width: 450px) {
-  .spinner h1 {
+  .spinner .spinnerCont h1 {
     font-size: 20px;
   }
-  .sk-folding-cube {
+  .spinner .spinnerCont .sk-folding-cube {
     width: 60px;
     height: 60px;
   }

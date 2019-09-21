@@ -1,10 +1,10 @@
 .imageList {
-  margin: 0 2% 5rem 2%;
-  width: 96%;
+  margin: 0 5% 5rem 5%;
+  width: 90%;
 }
 
 .imageList .gallery {
-  margin-top: 10rem;
+  padding-top: 2rem;
 }
 
 .imageList .gallery .containerPar {
@@ -60,16 +60,5 @@
     -webkit-column-count: 6;
     -moz-column-count: 6;
     column-count: 6;
-  }
-}
-
-@media (max-width: 850px) {
-  .imageList .gallery {
-    margin-top: 9rem;
-  }
-}
-@media (max-width: 499px) {
-  .imageList .gallery {
-    margin-top: 9rem;
   }
 }

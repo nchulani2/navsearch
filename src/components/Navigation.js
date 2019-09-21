@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Header from './Header';
 import Footer from './Footer';
 import '../styles/Navigation.css';
 import search from '../images/search.jpg';
 
-// import { connect } from 'react-redux';
-// import { openNav, closeNav } from '../actions';
 class Navigation extends Component {
   state = {
     isOpen: false
@@ -18,28 +15,32 @@ class Navigation extends Component {
   toggleOverlay = e => {
     e.preventDefault();
     const { isOpen } = this.state;
+    var section = document.getElementsByClassName('sectioning')[0];
     if (isOpen === false) {
       document.getElementById('overlayNav').classList.remove('hiddenBody');
+      section.classList.add('transIt');
+    } else {
+      section.classList.remove('transIt');
     }
     this.setState({
       isOpen: !isOpen
     });
   };
   render() {
+    var section = document.getElementsByClassName('sectioning')[0];
+
     return (
       <div className="navigation">
         <button
           onClick={this.toggleOverlay}
-          className="buttonNav animated bounceInRight faster">
+          className="buttonNav animated bounceInLeft faster">
           <i
             className={`${this.state.isOpen ? 'close icon' : 'bars icon'}`}></i>
         </button>
         <div
           id="overlayNav"
-          className={`overlayNav delay-0s faster ${
-            this.state.isOpen
-              ? 'animated slideInRight'
-              : 'animated slideOutRight'
+          className={`overlayNav delay-0s  ${
+            this.state.isOpen ? 'animated slideInLeft' : 'animated slideOutLeft'
           }`}>
           <div
             style={{ animationDelay: '0.3s' }}
@@ -50,10 +51,9 @@ class Navigation extends Component {
               to="/"
               onClick={() => {
                 this.setState({ isOpen: !this.state.isOpen });
-              }}>
-              <Header color="white"></Header>
-            </Link>
-            <div style={{ textAlign: 'center' }}>
+                section.classList.remove('transIt');
+              }}></Link>
+            <div style={{ textAlign: 'center', paddingTop: '30px' }}>
               <img
                 style={{ width: '40px' }}
                 src={search}
@@ -65,32 +65,34 @@ class Navigation extends Component {
               className={`linkEle ${
                 this.state.isOpen ? 'animated fadeInUp faster' : 'hiddenBody'
               }`}
-              to="/about"
+              to="/"
               onClick={() => {
-                this.setState({ isOpen: false });
+                this.setState({ isOpen: !this.state.isOpen });
+                section.classList.remove('transIt');
               }}>
-              About
-            </Link>
-
-            <Link
-              className={`linkEle ${
-                this.state.isOpen ? 'animated fadeInUp faster' : 'hiddenBody'
-              }`}
-              to="/login"
-              onClick={() => {
-                this.setState({ isOpen: false });
-              }}>
-              Login
+              Home
             </Link>
             <Link
               className={`linkEle ${
                 this.state.isOpen ? 'animated fadeInUp faster' : 'hiddenBody'
               }`}
-              to="/register"
+              to="/gallery"
               onClick={() => {
-                this.setState({ isOpen: false });
+                this.setState({ isOpen: !this.state.isOpen });
+                section.classList.remove('transIt');
               }}>
-              Register
+              Gallery
+            </Link>
+            <Link
+              className={`linkEle ${
+                this.state.isOpen ? 'animated fadeInUp faster' : 'hiddenBody'
+              }`}
+              to="/search"
+              onClick={() => {
+                this.setState({ isOpen: !this.state.isOpen });
+                section.classList.remove('transIt');
+              }}>
+              Search
             </Link>
           </div>
 
@@ -101,13 +103,4 @@ class Navigation extends Component {
   }
 }
 
-// const mapStateToProps = state => {
-//   return { data: state };
-// };
-
-export default // connect(
-// mapStateToProps,
-// { openNav, closeNav }
-// )(
-Navigation;
-// );
+export default Navigation;

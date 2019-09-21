@@ -2,9 +2,16 @@
   position: absolute;
   bottom: 0;
   background: transparent;
-  color: white;
+  color: rgb(200, 70, 70);
   width: 100%;
   text-align: center;
   padding: 10px 0;
   animation-delay: 0.3s;
+}
+
+.footer h3 {
+  font-family: 'Indie Flower', cursive;
+  font-weight: bolder;
+  line-height: 1rem;
+  font-size: 15px;
 }

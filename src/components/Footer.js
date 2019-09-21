@@ -7,15 +7,7 @@ const Footer = props => {
       className={`footer ${
         props.navState ? 'animated fadeInUp faster' : 'hiddenBody'
       }`}>
-      <h3
-        style={{
-          fontFamily: 'Indie Flower, cursive',
-          fontWeight: 'bolder',
-          lineHeight: '1rem',
-          fontSize: '15px'
-        }}>
-        Developed by Naveen Chulani
-      </h3>
+      <h3>Developed by Naveen Chulani</h3>
     </div>
   );
 };
