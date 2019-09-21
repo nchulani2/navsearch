@@ -3,7 +3,7 @@ const initialState = {
   total: null,
   total_pages: null,
   page: null,
-  query: null,
+  query: '',
   scrolling: false, // for when user reaches bottom of page
   loading: false
 };
