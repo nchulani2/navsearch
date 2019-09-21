@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import FormInput from '../components/FormInput';
-import { getMore } from '../actions';
+import { getMore, reset } from '../actions';
 import ImageList from '../components/ImageList';
 
 class Search extends Component {
   componentDidMount = () => {
+    this.props.reset();
     window.addEventListener('scroll', this.handleScroll);
   };
   componentWillUnmount = () => {
@@ -56,5 +57,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getMore }
+  { getMore, reset }
 )(Search);

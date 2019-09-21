@@ -9,7 +9,7 @@ const scrolling = () => dispatch => {
 };
 
 // need to reset state when user submits a new request
-const reset = () => dispatch => {
+export const reset = () => dispatch => {
   dispatch({ type: 'RESET' });
 };
 
